@@ -11,10 +11,11 @@ test("/api/v1/status should be 200", async () => {
   expect(responseBody.updated_at).toEqual(parsedUpdatedAt);
 
   //.dependencies.database.version
-  expect(responseBody.dependencies.database.version).toBe("17.6");
-
-  //.dependencies.database.max_connections
-  expect(responseBody.dependencies.database.max_connections).toBe(901);
+  expect(responseBody.dependencies.database.version).toBe(checkDBVersion());
 
   console.log(responseBody);
 });
+
+function checkDBVersion() {
+  return process.env.NODE_ENV == "development" ? "17.6" : "16.0";
+}

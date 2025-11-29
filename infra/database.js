@@ -27,5 +27,5 @@ export default {
 };
 
 function getSSLValues() {
-  return true;
+  return process.env.NODE_ENV == "development" ? false : true;
 }
