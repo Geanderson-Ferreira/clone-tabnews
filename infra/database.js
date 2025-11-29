@@ -7,16 +7,7 @@ async function query(queryObject) {
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.POSTGRES_DB,
     user: process.env.POSTGRES_USER,
-    ssl: true,
-  });
-
-  console.log({
-    host: process.env.POSTGRES_HOST,
-    port: process.env.POSTGRES_PORT,
-    password: process.env.POSTGRES_PASSWORD,
-    database: process.env.POSTGRES_DB,
-    user: process.env.POSTGRES_USER,
-    ssl: true,
+    ssl: getSSLValues(),
   });
 
   try {
@@ -34,3 +25,7 @@ async function query(queryObject) {
 export default {
   query: query,
 };
+
+function getSSLValues() {
+  return true;
+}
