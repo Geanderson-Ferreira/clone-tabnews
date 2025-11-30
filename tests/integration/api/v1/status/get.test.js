@@ -2,7 +2,7 @@ test("/api/v1/status should be 200", async () => {
   const response = await fetch("http://localhost:3000/api/v1/status");
   expect(response.status).toBe(200);
 
-  responseBody = await response.json();
+  const responseBody = await response.json();
 
   // Assertions
 
@@ -12,8 +12,6 @@ test("/api/v1/status should be 200", async () => {
 
   //.dependencies.database.version
   expect(responseBody.dependencies.database.version).toBe(checkDBVersion());
-
-  console.log(responseBody);
 });
 
 function checkDBVersion() {
